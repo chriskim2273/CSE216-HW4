@@ -16,7 +16,18 @@ class Node:
         return str(self.data)
 
     def __iter__(self):
-        yield self.data
+        list_of_nodes = []
+        inOrder(list_of_nodes, self)
+        for node in list_of_nodes:
+            yield node
+
+global inOrder
+def inOrder(lst: list, root: Node):
+    if root is None:
+        return []
+    inOrder(lst, root.left)
+    lst.append(root.data)
+    inOrder(lst, root.right)
 
 class BinarySearchTree:
     root = None
@@ -48,16 +59,9 @@ class BinarySearchTree:
             self.add(self.root, value)
         return
 
-    def inOrder(self,lst: list, root: Node):
-        if(root == None):
-            return []
-        self.inOrder(lst, root.left);
-        lst.append(root.data);
-        self.inOrder(lst, root.right);
-
     def __iter__(self):
         list_of_nodes = []
-        self.inOrder(list_of_nodes, self.root)
+        inOrder(list_of_nodes, self.root)
         for node in list_of_nodes:
             yield node
 
@@ -92,7 +96,7 @@ if __name__ == "__main__":
 
     print()
     print(t1)
-    for x in t1:
+    for x in t1.root:
         print(x)
 
     print()
