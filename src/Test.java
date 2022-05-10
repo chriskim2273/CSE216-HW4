@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.List;
 
 public class Test {
     public static void testBST(){
@@ -18,6 +19,12 @@ public class Test {
                 "no durians on this tree!", "tamarind"));
         System.out.println(t3); // see the expected output for exact format
         t3.forEach(System.out::println); // iteration in increasing order
+
+        System.out.println("----");
+
+        List<Integer> merged = BinarySearchTree.merge(Arrays.asList(t1, t2));
+        merged.forEach(a -> System.out.println(a));
+
         return;
     }
     public static void main(String... args){
